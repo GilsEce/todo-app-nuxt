@@ -2,14 +2,15 @@
   <div class="tasks">
     <h1 class="tasks__heading">Task Pages</h1>
     <div class="tasks__input__div">
-      <input type="text " v-model="newTask" class="tasks__input__div__new-task" id="task-input" />
-      <button
-        class="tasks__input__div__btn"
-        @click="addTask"
-      >Add Task</button>
+      <input type="text " v-model="newTask" class="tasks__input__div__new-task" />
+      <button class="tasks__input__div__btn" @click="addTask">Add Task</button>
     </div>
   </div>
 </template>
+
+
+
+
 
 <script>
 import { h, ref, reactive, watch } from "@nuxtjs/composition-api";
@@ -42,33 +43,44 @@ export default {
 };
 </script>
 
+
+
+
+
 <style  lang="scss" scoped>
+@function pixelToEm($pixel) {
+  $result: ($pixel/16)*1em;
+  @return $result;
+}
+
 .tasks {
   margin-top: 10px;
   height: 100vh;
 
   &__input__div {
-    @apply text-center;
-    @apply mt-2;
+    text-align: center;
+    margin-top: 1em;
 
     &__new-task {
-      @apply border;
-      @apply border-teal-400;
-      @apply py-2;
-      @apply px-2;
+      padding: 0.6em 0.6em;
+      border: pixelToEm(1) solid   #4fd1c5;
+
+      &:focus {
+        outline: none !important;
+        border: pixelToEm(2) solid #2c7a7b;
+      }
     }
 
-    &__btn{
-      @apply bg-blue-500;
-      @apply rounded;
-      @apply px-2;
-      @apply  py-2; 
-      @apply border;
-      @apply border-blue-500;
-      @apply text-white;
-     
+    &__btn {
+      //@apply bg-blue-500 rounded px-2 py-2  border border-blue-500  text-white;
 
-      &:hover{
+      color: red;
+      padding: .6em .6em;
+      background-color: white;
+      border: pixelToEm(1) solid  #4299e1;
+      color: #2B6CB0;
+
+      &:hover {
         @apply text-white;
         @apply border-transparent;
         @apply bg-blue-700;
