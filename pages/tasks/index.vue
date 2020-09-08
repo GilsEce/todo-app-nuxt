@@ -9,9 +9,6 @@
 </template>
 
 
-
-
-
 <script>
 import { h, ref, reactive, watch } from "@nuxtjs/composition-api";
 export default {
@@ -45,14 +42,7 @@ export default {
 
 
 
-
-
 <style  lang="scss" scoped>
-@function pixelToEm($pixel) {
-  $result: ($pixel/16)*1em;
-  @return $result;
-}
-
 .tasks {
   margin-top: 10px;
   height: 100vh;
@@ -63,7 +53,7 @@ export default {
 
     &__new-task {
       padding: 0.6em 0.6em;
-      border: pixelToEm(1) solid   #4fd1c5;
+      border: pixelToEm(1) solid #4fd1c5;
 
       &:focus {
         outline: none !important;
@@ -72,15 +62,14 @@ export default {
     }
 
     &__btn {
-      //@apply bg-blue-500 rounded px-2 py-2  border border-blue-500  text-white;
-
       color: red;
-      padding: .6em .6em;
+      padding: 0.6em 0.6em;
       background-color: white;
-      border: pixelToEm(1) solid  #4299e1;
-      color: #2B6CB0;
+      border: pixelToEm(2) solid #4299e1;
+      color: #2b6cb0;
 
-      &:hover {
+      &:hover,
+      &:focus {
         @apply text-white;
         @apply border-transparent;
         @apply bg-blue-700;
