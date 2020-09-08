@@ -70,8 +70,8 @@ export default {
 
       &:hover,
       &:focus {
-        @apply text-white;
-        @apply border-transparent;
+        color: white;
+        border-color:transparent ;
         @apply bg-blue-700;
       }
     }
