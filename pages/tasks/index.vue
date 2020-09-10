@@ -71,6 +71,7 @@ export default {
     margin-top: 1em;
 
     &__new-task {
+      width: 20em;
       padding: 0.65em 0.65em;
       border: pixelToEm(1) solid #4fd1c5;
       text-transform: capitalize;
