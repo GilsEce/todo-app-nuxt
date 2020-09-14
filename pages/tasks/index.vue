@@ -14,6 +14,8 @@
     </div>
 
     <Items />
+    <Items />
+    <Items />
   </div>
 </template>
 
