@@ -1,9 +1,9 @@
 <template>
   <div class="flex-container">
     <div class="item-1">
-      <li type="none" class="item-1__task-list item-1__task-list--rounded">
+      <div type="none" class="item-1__task-list item-1__task-list--rounded">
         Eating
-      </li>
+      </div>
     </div>
     <div class="item-2">
       <button class="item-2__delete-btn item-2__delete-btn--rounded">
