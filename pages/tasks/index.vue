@@ -16,7 +16,6 @@
     <Items>Eating</Items>
     <Items>Coding</Items>
     <Items>Repeat</Items>
-  
   </div>
 </template>
 
