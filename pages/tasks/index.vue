@@ -13,16 +13,17 @@
       >Add Task</button>
     </div>
 
-    <Items />
-    <Items />
-    <Items />
+    <Items>Eating</Items>
+    <Items>Coding</Items>
+    <Items>Repeat</Items>
+  
   </div>
 </template>
 
 
 <script>
 import { ref, reactive, watch } from "@nuxtjs/composition-api";
-import Items from "~/components/Items.vue";
+import Items from "~/components/TaskComponent/Items";
 export default {
   components: {
     Items,
@@ -42,9 +43,9 @@ export default {
       }
     };
 
-    // const taskWatch = watch(tasks, (newVal, oldVal) => {
-    //   console.log("Task changed", newVal, oldVal);
-    // });
+    const taskWatch = watch([tasks], (newVal, oldVal) => {
+      console.log("Task changed", newVal, oldVal);
+    });
 
     return {
       newTask,
