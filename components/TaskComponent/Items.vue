@@ -56,6 +56,8 @@ export default {
   flex-basis: pixelToEm(60);
   height: pixelToEm(50);
   &__delete-btn {
+    height:100%;
+    width:100%;
     font-family: Arial, sans-serif;
     padding: 0.6em 0.6em;
     background-color: white;
