@@ -5,6 +5,7 @@
       <input
         type="text "
         v-model="newTask"
+        maxlength="20"
         class="tasks__input__div__new-task tasks__input__div__new-task--rounded"
       />
       <button
