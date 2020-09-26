@@ -55,7 +55,7 @@ export default {
       }
       let payload = {
         id: taskId.value,
-        name: capital_letter(newTask.value),
+        name: capital_letter(newTask.value.trim()),
         isDone: false,
       };
       newTask.value = "";
