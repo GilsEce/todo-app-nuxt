@@ -49,7 +49,8 @@ export default {
     }
 
     const addTask = () => {
-      if (newTask.value.length <= 0) {
+      if (newTask.value.trim().length <= 0) {
+        newTask.value = "";
         return false;
       }
       let payload = {
