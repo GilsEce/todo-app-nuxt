@@ -10,46 +10,58 @@
       <button
         class="tasks__input__div__btn tasks__input__div__btn--rounded"
         @click="addTask"
-      >Add Task</button>
+      >
+        Add Task
+      </button>
     </div>
 
-    <Items>Eating</Items>
-    <Items>Coding</Items>
-    <Items>Repeat</Items>
+    <Items v-for="task in tasks" :key="task.id">{{ task.name }}</Items>
   </div>
 </template>
 
 
 <script>
-import { ref, reactive, watch } from "@nuxtjs/composition-api";
+import { ref, reactive, watch, computed } from "@nuxtjs/composition-api";
 import Items from "~/components/TaskComponent/Items";
 export default {
   components: {
     Items,
   },
-  setup() {
+  setup(props, { root }) {
     //data
     const newTask = ref("");
-    const tasks = ref([]);
+
+    const tasks = computed(() => root.$store.getters["todos/getTasks"]);
+    const taskId = computed(() => root.$store.getters["todos/getLastTasksId"]);
+    const taskWatch = watch([tasks], (newVal, oldVal) => {
+    });
 
     //method
-    const addTask = () => {
-      if (newTask.value.length > 0) {
-        tasks.value.push(newTask.value);
-        newTask.value = "";
-      } else {
-        return false;
-      }
-    };
 
-    const taskWatch = watch([tasks], (newVal, oldVal) => {
-      console.log("Task changed", newVal, oldVal);
-    });
+    function capital_letter(str) {
+      str = str.split(" ");
+
+      for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+      }
+
+      return str.join(" ");
+    }
+
+    const addTask = () => {
+      let payload = {
+        id: taskId.value,
+        name: capital_letter(newTask.value),
+        isDone: false,
+      };
+      newTask.value = "";
+      root.$store.dispatch("todos/createTasks", payload);
+    };
 
     return {
       newTask,
-      tasks,
       addTask,
+      tasks,
     };
   },
 };
