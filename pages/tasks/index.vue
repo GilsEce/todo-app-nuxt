@@ -33,8 +33,7 @@ export default {
 
     const tasks = computed(() => root.$store.getters["todos/getTasks"]);
     const taskId = computed(() => root.$store.getters["todos/getLastTasksId"]);
-    const taskWatch = watch([tasks], (newVal, oldVal) => {
-    });
+    const taskWatch = watch([tasks], (newVal, oldVal) => {});
 
     //method
 
@@ -49,6 +48,9 @@ export default {
     }
 
     const addTask = () => {
+      if (newTask.value.length <= 0) {
+        return false;
+      }
       let payload = {
         id: taskId.value,
         name: capital_letter(newTask.value),
