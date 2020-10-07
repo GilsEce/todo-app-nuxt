@@ -73,7 +73,7 @@ export default {
 
 <style lang="scss" scoped>
 .tasks {
-  height: 100vh;
+  min-height: 100vh;
 
   &__heading {
     font-weight: 350;
