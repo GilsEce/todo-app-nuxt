@@ -16,15 +16,15 @@
       </button>
     </div>
 
-    <Items v-for="task in tasks" :key="task.id">{{ task.name }}</Items>
+    <Items v-for="task in tasks" :taskId='task.id' :key="task.id">{{ task.name }}</Items>
   </div>
 </template>
-
 
 <script>
 import { ref, reactive, watch, computed } from "@nuxtjs/composition-api";
 import Items from "~/components/TaskComponent/Items";
 export default {
+  layout: "main",
   components: {
     Items,
   },
@@ -71,17 +71,15 @@ export default {
 };
 </script>
 
-
-
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .tasks {
-  margin-top: 10px;
   height: 100vh;
 
   &__heading {
     font-weight: 350;
     text-align: center;
     font-size: 60px;
+    padding-top:1rem;
   }
 
   &__input__div {

@@ -9,6 +9,7 @@
 import Logo from '~/components/Logo.vue'
 
 export default {
+  layout:'plain',
   components: {
     Logo
   }

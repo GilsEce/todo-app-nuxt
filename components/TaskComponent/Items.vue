@@ -6,7 +6,10 @@
       </div>
     </div>
     <div class="item-2">
-      <button class="item-2__delete-btn item-2__delete-btn--rounded">
+      <button
+        class="item-2__delete-btn item-2__delete-btn--rounded"
+        @click="deleteTask(taskId)"
+      >
         Delete
       </button>
     </div>
@@ -16,7 +19,16 @@
 <script>
 import { ref, reactive, watch } from "@nuxtjs/composition-api";
 export default {
-  setup() {}
+  props:['taskId'],
+  setup(props, { root }) {
+      const deleteTask=(taskId)=>{
+           root.$store.dispatch("todos/deleteTask", taskId);
+      }
+      
+      return {
+          deleteTask
+      }
+  }
 };
 </script>
 
@@ -55,9 +67,10 @@ export default {
 .item-2 {
   flex-basis: pixelToEm(60);
   height: pixelToEm(50);
+
   &__delete-btn {
-    height:100%;
-    width:100%;
+    height: 100%;
+    width: 100%;
     font-family: Arial, sans-serif;
     padding: 0.6em 0.6em;
     background-color: white;
