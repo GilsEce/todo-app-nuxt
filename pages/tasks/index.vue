@@ -31,6 +31,11 @@
 
 <script>
 import { ref, reactive, watch, computed } from "@nuxtjs/composition-api";
+// import {
+//   useState,
+//   useActions,
+//   useGetters,
+// } from "vuex-composition-helpers";
 import Items from "~/components/TaskComponent/Items";
 export default {
   layout: "main",
@@ -42,6 +47,7 @@ export default {
     const newTask = ref("");
     const tasks = computed(() => root.$store.getters["todos/getTasks"]);
     const taskId = computed(() => root.$store.getters["todos/getLastTasksId"]);
+    
     const taskWatch = watch([tasks], (newVal, oldVal) => {});
 
     //method

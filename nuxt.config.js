@@ -51,9 +51,11 @@ export default {
    ** Build configuration
    */
   build: {
+    transpile: [new RegExp(".*@babel/runtime/helpers/esm/.*", "ig")],
     /*
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  }
+  },
+  transpileDependencies: ['vuex-composition-helpers'],
 };
