@@ -16,7 +16,7 @@
       </button>
     </div>
 
-    <Items v-for="task in tasks" :taskId='task.id' :key="task.id">{{ task.name }}</Items>
+    <Items v-for="task in tasks" :id='id' :key="task.id">{{ task.name }}</Items>
   </div>
 </template>
 

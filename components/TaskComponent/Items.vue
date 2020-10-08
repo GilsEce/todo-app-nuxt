@@ -8,7 +8,7 @@
     <div class="item-2">
       <button
         class="item-2__delete-btn item-2__delete-btn--rounded"
-        @click="deleteTask(taskId)"
+        @click="deleteTask(id)"
       >
         Delete
       </button>
@@ -19,7 +19,7 @@
 <script>
 import { ref, reactive, watch } from "@nuxtjs/composition-api";
 export default {
-  props:['taskId'],
+  props:['id'],
   setup(props, { root }) {
       const deleteTask=(taskId)=>{
            root.$store.dispatch("todos/deleteTask", taskId);
