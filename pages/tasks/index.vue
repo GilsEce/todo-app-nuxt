@@ -16,7 +16,16 @@
       </button>
     </div>
 
-    <Items v-for="task in tasks" :id='id' :key="task.id">{{ task.name }}</Items>
+    <Items v-for="task in tasks" :key="task.id">
+      <p slot="title">{{ task.name }}</p>
+      <button
+        slot="deleteButton"
+        class="item-2__delete-btn item-2__delete-btn--rounded"
+        @click="deleteTask(task.id)"
+      >
+        Delete
+      </button>
+    </Items>
   </div>
 </template>
 
@@ -26,18 +35,16 @@ import Items from "~/components/TaskComponent/Items";
 export default {
   layout: "main",
   components: {
-    Items,
+    Items
   },
   setup(props, { root }) {
     //data
     const newTask = ref("");
-
     const tasks = computed(() => root.$store.getters["todos/getTasks"]);
     const taskId = computed(() => root.$store.getters["todos/getLastTasksId"]);
     const taskWatch = watch([tasks], (newVal, oldVal) => {});
 
     //method
-
     function capital_letter(str) {
       str = str.split(" ");
 
@@ -56,18 +63,23 @@ export default {
       let payload = {
         id: taskId.value,
         name: capital_letter(newTask.value.trim()),
-        isDone: false,
+        isDone: false
       };
       newTask.value = "";
       root.$store.dispatch("todos/createTasks", payload);
+    };
+
+    const deleteTask = taskId => {
+      root.$store.dispatch("todos/deleteTask", taskId);
     };
 
     return {
       newTask,
       addTask,
       tasks,
+      deleteTask
     };
-  },
+  }
 };
 </script>
 
@@ -79,7 +91,7 @@ export default {
     font-weight: 350;
     text-align: center;
     font-size: 60px;
-    padding-top:1rem;
+    padding-top: 1rem;
   }
 
   &__input__div {

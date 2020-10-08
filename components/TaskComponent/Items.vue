@@ -2,16 +2,11 @@
   <div class="flex-container">
     <div class="item-1">
       <div type="none" class="item-1__task-list item-1__task-list--rounded">
-        <slot></slot>
+        <slot name="title"></slot>
       </div>
     </div>
     <div class="item-2">
-      <button
-        class="item-2__delete-btn item-2__delete-btn--rounded"
-        @click="deleteTask(id)"
-      >
-        Delete
-      </button>
+      <slot name="deleteButton"></slot>
     </div>
   </div>
 </template>
@@ -19,16 +14,7 @@
 <script>
 import { ref, reactive, watch } from "@nuxtjs/composition-api";
 export default {
-  props:['id'],
-  setup(props, { root }) {
-      const deleteTask=(taskId)=>{
-           root.$store.dispatch("todos/deleteTask", taskId);
-      }
-      
-      return {
-          deleteTask
-      }
-  }
+  setup(props, { root }) {}
 };
 </script>
 
