@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import { ref, reactive, watch, computed } from "@nuxtjs/composition-api";
+import { ref, watch } from "@nuxtjs/composition-api";
 import useVuexHelper from "@/compositions/custom-vuex-helper";
 
 import Items from "~/components/TaskComponent/Items";
