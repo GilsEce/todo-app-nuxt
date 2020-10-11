@@ -1,4 +1,4 @@
-# t-1
+# Simple Todo App
 
 > Simple Todo app project with vue 3 composition api and nuxt,. this project will show :
 
