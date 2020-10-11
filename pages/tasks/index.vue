@@ -17,7 +17,14 @@
     </div>
 
     <Items v-for="task in tasks" :key="task.id">
-      <p slot="title">{{ task.name }}</p>
+      <div
+        slot="title"
+        type="none"
+        class="item-1__task-list item-1__task-list--rounded"
+        @click="updateStatus(task.id)"
+      >
+        <p :class="{ isDone: task.isDone }">{{ task.name }}</p>
+      </div>
       <button
         slot="deleteButton"
         class="item-2__delete-btn item-2__delete-btn--rounded"
@@ -52,9 +59,14 @@ export default {
 
     //method
 
-    const { todosDeleteTask, todosCreateTask } = useActions({
+    const {
+      todosDeleteTask,
+      todosCreateTask,
+      todosUpdateTaskStatus,
+    } = useActions({
       todosDeleteTask: "todos/deleteTask",
       todosCreateTask: "todos/createTasks",
+      todosUpdateTaskStatus: "todos/updateTaskStatus",
     });
 
     function toCapitalLetter(str) {
@@ -81,6 +93,10 @@ export default {
       todosCreateTask(payload);
     };
 
+    const updateStatus = (taskId) => {
+      todosUpdateTaskStatus(taskId);
+    };
+
     const deleteTask = (taskId) => {
       todosDeleteTask(taskId);
     };
@@ -89,6 +105,7 @@ export default {
       newTask,
       addTask,
       tasks,
+      updateStatus,
       deleteTask,
     };
   },
@@ -96,6 +113,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.isDone {
+  text-decoration: line-through;
+  text-decoration-color: gray;
+}
+
 .tasks {
   min-height: 100vh;
 

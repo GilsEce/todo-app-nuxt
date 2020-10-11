@@ -1,9 +1,7 @@
 <template>
   <div class="flex-container">
     <div class="item-1">
-      <div type="none" class="item-1__task-list item-1__task-list--rounded">
-        <slot name="title"></slot>
-      </div>
+      <slot name="title"></slot>
     </div>
     <div class="item-2">
       <slot name="deleteButton"></slot>
@@ -14,7 +12,7 @@
 <script>
 import { ref, reactive, watch } from "@nuxtjs/composition-api";
 export default {
-  setup(props, { root }) {}
+  setup(props, { root }) {},
 };
 </script>
 
@@ -46,6 +44,10 @@ export default {
 
     &--rounded {
       @include rounded(pixelToEm(6));
+
+      &:hover {
+        background-color: #a1f184;
+      }
     }
   }
 }
