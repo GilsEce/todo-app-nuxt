@@ -1,12 +1,12 @@
 export default () => ({
-    blogs: [
+    skills: [
       {
         id:1,
-        title: "JS BLog",
+        name: "JS",
       },
       {
         id:2,
-        title: "PHP Blog",
+        name: "PHP",
       }
     ]
   });

@@ -1,14 +1,12 @@
 export default () => ({
-    tasks: [
+    contents: [
       {
         id:1,
-        name: "Coding",
-        isDone:false
+        name: "PHP BLOG",
       },
       {
         id:2,
-        name: "Reading",
-        isDone:true
+        name: "JS BLOG",
       }
     ]
   });
