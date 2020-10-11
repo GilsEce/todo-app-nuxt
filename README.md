@@ -1,6 +1,10 @@
 # t-1
 
-> My astonishing Nuxt.js project
+> Simple Todo app project with vue 3 and nuxt, composition api. this project will show :
+
+* How to use composition api.
+* How to use vuex in composition api.
+* How to create and use a custom vuex, mapGetters and mapActions using custom hooks.
 
 ## Build Setup
 
