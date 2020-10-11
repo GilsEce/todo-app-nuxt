@@ -31,27 +31,33 @@
 
 <script>
 import { ref, reactive, watch, computed } from "@nuxtjs/composition-api";
-// import {
-//   useState,
-//   useActions,
-//   useGetters,
-// } from "vuex-composition-helpers";
+import useVuexHelper from "@/compositions/custom-vuex-helper";
+
 import Items from "~/components/TaskComponent/Items";
 export default {
   layout: "main",
   components: {
-    Items
+    Items,
   },
   setup(props, { root }) {
     //data
+    const [useGetters, useActions] = useVuexHelper(root.$store); // from custom vuex helper
     const newTask = ref("");
-    const tasks = computed(() => root.$store.getters["todos/getTasks"]);
-    const taskId = computed(() => root.$store.getters["todos/getLastTasksId"]);
-    
-    const taskWatch = watch([tasks], (newVal, oldVal) => {});
+    const { tasks, taskId } = useGetters({
+      tasks: "todos/getTasks",
+      taskId: "todos/getLastTasksId",
+    });
+
+    const taskWatch = watch([tasks], (newVal, oldVal) => {}); //this function will trigger when task data is change.
 
     //method
-    function capital_letter(str) {
+
+    const { todosDeleteTask, todosCreateTask } = useActions({
+      todosDeleteTask: "todos/deleteTask",
+      todosCreateTask: "todos/createTasks",
+    });
+
+    function toCapitalLetter(str) {
       str = str.split(" ");
 
       for (var i = 0, x = str.length; i < x; i++) {
@@ -68,24 +74,24 @@ export default {
       }
       let payload = {
         id: taskId.value,
-        name: capital_letter(newTask.value.trim()),
-        isDone: false
+        name: toCapitalLetter(newTask.value.trim()),
+        isDone: false,
       };
       newTask.value = "";
-      root.$store.dispatch("todos/createTasks", payload);
+      todosCreateTask(payload);
     };
 
-    const deleteTask = taskId => {
-      root.$store.dispatch("todos/deleteTask", taskId);
+    const deleteTask = (taskId) => {
+      todosDeleteTask(taskId);
     };
 
     return {
       newTask,
       addTask,
       tasks,
-      deleteTask
+      deleteTask,
     };
-  }
+  },
 };
 </script>
 
