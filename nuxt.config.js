@@ -56,6 +56,5 @@ export default {
      ** You can extend webpack config here
      */
     extend(config, ctx) {}
-  },
-  transpileDependencies: ['vuex-composition-helpers'],
+  }
 };
