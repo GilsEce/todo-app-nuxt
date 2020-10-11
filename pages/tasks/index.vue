@@ -55,8 +55,6 @@ export default {
       taskId: "todos/getLastTasksId",
     });
 
-    const taskWatch = watch([tasks], (newVal, oldVal) => {}); //this function will trigger when task data is change.
-
     //method
 
     const { deleteTask, createTasks, updateTaskStatus } = useActions({
@@ -64,6 +62,8 @@ export default {
       createTasks: "todos/createTasks",
       updateTaskStatus: "todos/updateTaskStatus",
     });
+
+    const taskWatch = watch([tasks], (newVal, oldVal) => {}); //this function will trigger when task data is change.
 
     function toCapitalLetter(str) {
       str = str.split(" ");
