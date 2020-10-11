@@ -1,4 +1,5 @@
 # Simple Todo App
+https://todoappnuxt.netlify.app/tasks
 
 > Simple Todo app project with vue 3 composition api and nuxt,. this project will show :
 
