@@ -120,6 +120,7 @@ export default {
 
 .tasks {
   min-height: 100vh;
+  padding-bottom: 3rem;
 
   &__heading {
     font-weight: 350;
