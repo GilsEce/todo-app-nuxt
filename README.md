@@ -5,7 +5,7 @@
 * How to use composition api.
 * How to use vuex modular in nuxt.
 * How to use vuex in composition api.
-* How to create and use a custom vuex, mapGetters and mapActions using custom hooks.
+* How to create and use a custom vuex helper ( mapGetters and mapActions ) using custom hooks.
 
 ## Build Setup
 
