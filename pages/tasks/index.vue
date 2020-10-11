@@ -10,7 +10,7 @@
       />
       <button
         class="tasks__input__div__btn tasks__input__div__btn--rounded"
-        @click="addTask"
+        @click="addTaskHandler"
       >
         Add Task
       </button>
@@ -21,14 +21,14 @@
         slot="title"
         type="none"
         class="item-1__task-list item-1__task-list--rounded"
-        @click="updateStatus(task.id)"
+        @click="updateStatusHandler(task.id)"
       >
         <p :class="{ isDone: task.isDone }">{{ task.name }}</p>
       </div>
       <button
         slot="deleteButton"
         class="item-2__delete-btn item-2__delete-btn--rounded"
-        @click="deleteTask(task.id)"
+        @click="deleteTaskHandler(task.id)"
       >
         Delete
       </button>
@@ -59,14 +59,10 @@ export default {
 
     //method
 
-    const {
-      todosDeleteTask,
-      todosCreateTask,
-      todosUpdateTaskStatus,
-    } = useActions({
-      todosDeleteTask: "todos/deleteTask",
-      todosCreateTask: "todos/createTasks",
-      todosUpdateTaskStatus: "todos/updateTaskStatus",
+    const { deleteTask, createTasks, updateTaskStatus } = useActions({
+      deleteTask: "todos/deleteTask",
+      createTasks: "todos/createTasks",
+      updateTaskStatus: "todos/updateTaskStatus",
     });
 
     function toCapitalLetter(str) {
@@ -79,7 +75,7 @@ export default {
       return str.join(" ");
     }
 
-    const addTask = () => {
+    const addTaskHandler = () => {
       if (newTask.value.trim().length <= 0) {
         newTask.value = "";
         return false;
@@ -90,23 +86,23 @@ export default {
         isDone: false,
       };
       newTask.value = "";
-      todosCreateTask(payload);
+      createTasks(payload);
     };
 
-    const updateStatus = (taskId) => {
-      todosUpdateTaskStatus(taskId);
+    const updateStatusHandler = (taskId) => {
+      updateTaskStatus(taskId);
     };
 
-    const deleteTask = (taskId) => {
-      todosDeleteTask(taskId);
+    const deleteTaskHandler = (taskId) => {
+      deleteTask(taskId);
     };
 
     return {
       newTask,
-      addTask,
+      addTaskHandler,
       tasks,
-      updateStatus,
-      deleteTask,
+      updateStatusHandler,
+      deleteTaskHandler,
     };
   },
 };
