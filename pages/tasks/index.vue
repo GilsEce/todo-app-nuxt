@@ -1,6 +1,12 @@
 <template>
   <div class="tasks">
     <h1 class="tasks__heading">Simple Todo App</h1>
+    <img
+      class="tasks__repo-logo"
+      src="@/assets/images/github.png"
+      alt="github_logo"
+      @click="gotoRepo"
+    />
     <div class="tasks__input__div">
       <input
         type="text "
@@ -75,6 +81,10 @@ export default {
       return str.join(" ");
     }
 
+    const gotoRepo = () => {
+      window.open("https://github.com/GilsEce/todo-app-nuxt", "_blank");
+    };
+
     const addTaskHandler = () => {
       if (newTask.value.trim().length <= 0) {
         newTask.value = "";
@@ -103,6 +113,7 @@ export default {
       tasks,
       updateStatusHandler,
       deleteTaskHandler,
+      gotoRepo,
     };
   },
 };
@@ -117,6 +128,16 @@ export default {
 .tasks {
   min-height: 100vh;
   padding-bottom: 3rem;
+
+  &__repo-logo {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 auto;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
 
   &__heading {
     font-weight: 350;
