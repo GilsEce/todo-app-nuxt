@@ -1,4 +1,10 @@
 export default {
+  vue: {
+    config: {
+      productionTip: true,
+      devtools: false
+    }
+  },
   mode: "universal",
   /*
    ** Headers of the page
